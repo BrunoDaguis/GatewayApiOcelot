@@ -1,0 +1,40 @@
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/product/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44366
+        }
+      ],
+      "Key":  "Produto",
+      "UpstreamPathTemplate": "/api/product/{everything}"
+    },
+    {
+      "DownstreamPathTemplate": "/api/payment/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44326
+        }
+      ],
+      "Key": "Pagamento",
+      "UpstreamPathTemplate": "/api/payment/{everything}"
+    }
+  ],
+  "Aggregates": [
+    {
+      "ReRouteKeys": [
+        "Produto",
+        "Pagamento"
+      ],
+      "UpstreamPathTemplate": "/api/ProductAndPayments/{everything}"
+    }
+  ],
+  "GlobalConfiguration": {
+
+  }
+}
